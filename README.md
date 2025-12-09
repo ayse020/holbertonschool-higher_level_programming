@@ -3,5 +3,3 @@
 This project contains solutions for the Python Import & Modules tasks.
 
 Project completed successfully.
-
-Project completed successfully.

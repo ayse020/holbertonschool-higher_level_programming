@@ -2,26 +2,29 @@
 
 def safe_print_list(my_list=[], x=0):
     """
-    Prints x elements of a list safely.
+    Siyahıdan müəyyən sayda element çap edir.
     
     Args:
-        my_list (list): The list to print elements from
-        x (int): The number of elements to print
+        my_list: Çap ediləcək elementləri ehtiva edən siyahı
+        x: Çap ediləcək elementlərin sayı
     
     Returns:
-        int: The real number of elements printed
+        Həqiqətən çap edilən elementlərin sayı
     """
-    count = 0
+    count = 0  # Çap edilən elementlərin sayını saxlayırıq
     
     try:
+        # 0-dan x-1-ə qədər olan indekslər üçün dövr edirik
         for i in range(x):
-            # Try to access and print each element
+            # Siyahının i-ci elementinə çatmağa çalışırıq
             print(my_list[i], end="")
-            count += 1
+            count += 1  # Uğurla çap etdik, sayı artırırıq
     except IndexError:
-        # This exception occurs when we try to access
-        # an index that doesn't exist in the list
+        # Siyahıda i-ci element yoxdursa, xətanı gözləyirik
+        # Bu halda sadəcə dövrü dayandırırıq
         pass
+    finally:
+        # Bütün çap edilənlərdən sonra yeni sətirə keçirik
+        print()
     
-    print()  # Print new line after all elements
     return count

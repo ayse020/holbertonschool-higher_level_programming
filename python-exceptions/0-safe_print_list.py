@@ -1,30 +1,27 @@
-#!/usr/bin/python3
-
 def safe_print_list(my_list=[], x=0):
     """
-    Siyahıdan müəyyən sayda element çap edir.
+    Prints x elements of a list.
     
     Args:
-        my_list: Çap ediləcək elementləri ehtiva edən siyahı
-        x: Çap ediləcək elementlərin sayı
-    
+        my_list (list): The list to print elements from
+        x (int): The number of elements to print
+        
     Returns:
-        Həqiqətən çap edilən elementlərin sayı
+        int: The real number of elements printed
     """
-    count = 0  # Çap edilən elementlərin sayını saxlayırıq
+    printed_count = 0
     
     try:
-        # 0-dan x-1-ə qədər olan indekslər üçün dövr edirik
         for i in range(x):
-            # Siyahının i-ci elementinə çatmağa çalışırıq
+            # Print each element without newline
             print(my_list[i], end="")
-            count += 1  # Uğurla çap etdik, sayı artırırıq
+            printed_count += 1
     except IndexError:
-        # Siyahıda i-ci element yoxdursa, xətanı gözləyirik
-        # Bu halda sadəcə dövrü dayandırırıq
+        # This happens when x is bigger than the list length
+        # We just want to stop printing, no error message needed
         pass
     finally:
-        # Bütün çap edilənlərdən sonra yeni sətirə keçirik
+        # Always print a new line after all elements
         print()
     
-    return count
+    return printed_count

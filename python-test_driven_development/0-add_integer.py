@@ -1,36 +1,51 @@
 #!/usr/bin/python3
 """
-0-add_integer modulu
-İki tam ədədin toplanması üçün funksiya
+0-add_integer module
+Function that adds two integers
 """
 
 
 def add_integer(a, b=98):
     """
-    İki ədədi toplayır və tam ədəd qaytarır
-    
+    Returns the addition of two integers
+
     Args:
-        a: birinci ədəd (tam və ya kəsr)
-        b: ikinci ədəd (tam və ya kəsr), default 98
-    
+        a: first number (int or float)
+        b: second number (int or float), defaults to 98
+
     Returns:
-        a və b-nin toplamı (tam ədəd)
-    
+        int: sum of a and b
+
     Raises:
-        TypeError: a və ya b tam/kəsr ədəd deyilsə
+        TypeError: if a or b is not int or float
+        OverflowError: for float('inf') or float('-inf')
+        ValueError: for float('nan')
     """
-    
-    # a-nın tipini yoxlamaq
+    # Type checking first
     if type(a) not in (int, float):
         raise TypeError("a must be an integer")
-    
-    # b-nin tipini yoxlamaq
+
     if type(b) not in (int, float):
         raise TypeError("b must be an integer")
-    
-    # Əgər float-dursa, int-ə çevirmək
+
+    # Handle special float cases before conversion
+    # Check for NaN (Not a Number) - nan is not equal to itself
+    if isinstance(a, float) and a != a:
+        raise ValueError("cannot convert float NaN to integer")
+
+    if isinstance(b, float) and b != b:
+        raise ValueError("cannot convert float NaN to integer")
+
+    # Check for infinity
+    if isinstance(a, float) and (a == float('inf') or a == float('-inf')):
+        raise OverflowError("cannot convert float infinity to integer")
+
+    if isinstance(b, float) and (b == float('inf') or b == float('-inf')):
+        raise OverflowError("cannot convert float infinity to integer")
+
+    # Convert to integers (safe now)
     a = int(a)
     b = int(b)
-    
-    # Toplama və nəticəni qaytarma
+
+    # Return sum
     return a + b

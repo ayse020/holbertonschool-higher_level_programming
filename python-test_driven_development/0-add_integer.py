@@ -1,51 +1,49 @@
 #!/usr/bin/python3
 """
-0-add_integer module
-Function that adds two integers
+0-add_integer modulu
+Iki tam ededi toplayan funksiyani temin edir
+Bu modul TDD (Test Driven Development) prinsipleri ile yaradilib.
 """
 
 
 def add_integer(a, b=98):
     """
-    Returns the addition of two integers
-
+    Iki tam ededi toplayir.
+    
     Args:
-        a: first number (int or float)
-        b: second number (int or float), defaults to 98
-
+        a: Birinci eded (integer ve ya float)
+        b: Ikinci eded (integer ve ya float), default deyeri 98
+    
     Returns:
-        int: sum of a and b
-
+        a ve b-nin cemi (integer)
+    
     Raises:
-        TypeError: if a or b is not int or float
-        OverflowError: for float('inf') or float('-inf')
-        ValueError: for float('nan')
+        TypeError: Eger a ve ya b integer ve ya float deyilse
+    
+    Numuneler:
+        >>> add_integer(1, 2)
+        3
+        >>> add_integer(100, -2)
+        98
+        >>> add_integer(2)
+        100
+        >>> add_integer(100.3, -2)
+        98
     """
-    # Type checking first
-    if type(a) not in (int, float):
+    
+    # a-nin tipini yoxlayaq
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-
-    if type(b) not in (int, float):
+    
+    # b-nin tipini yoxlayaq
+    if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-
-    # Handle special float cases before conversion
-    # Check for NaN (Not a Number) - nan is not equal to itself
-    if isinstance(a, float) and a != a:
-        raise ValueError("cannot convert float NaN to integer")
-
-    if isinstance(b, float) and b != b:
-        raise ValueError("cannot convert float NaN to integer")
-
-    # Check for infinity
-    if isinstance(a, float) and (a == float('inf') or a == float('-inf')):
-        raise OverflowError("cannot convert float infinity to integer")
-
-    if isinstance(b, float) and (b == float('inf') or b == float('-inf')):
-        raise OverflowError("cannot convert float infinity to integer")
-
-    # Convert to integers (safe now)
-    a = int(a)
-    b = int(b)
-
-    # Return sum
+    
+    # Eger float-dirsa, integer-e cevirek
+    if isinstance(a, float):
+        a = int(a)
+    if isinstance(b, float):
+        b = int(b)
+    
+    # Toplama emeliyyatini yerine yetirek
     return a + b

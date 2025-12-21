@@ -1,49 +1,37 @@
 #!/usr/bin/python3
 """
-0-add_integer modulu
-Iki tam ededi toplayan funksiyani temin edir
-Bu modul TDD (Test Driven Development) prinsipleri ile yaradilib.
+0-add_integer module
+Provides function to add two integers
 """
 
 
 def add_integer(a, b=98):
     """
-    Iki tam ededi toplayir.
-    
+    Adds two integers
+
     Args:
-        a: Birinci eded (integer ve ya float)
-        b: Ikinci eded (integer ve ya float), default deyeri 98
-    
+        a: First number (int or float)
+        b: Second number (int or float), defaults to 98
+
     Returns:
-        a ve b-nin cemi (integer)
-    
+        Sum of a and b as integer
+
     Raises:
-        TypeError: Eger a ve ya b integer ve ya float deyilse
-    
-    Numuneler:
-        >>> add_integer(1, 2)
-        3
-        >>> add_integer(100, -2)
-        98
-        >>> add_integer(2)
-        100
-        >>> add_integer(100.3, -2)
-        98
+        TypeError: If a or b are not integers or floats
     """
-    
-    # a-nin tipini yoxlayaq
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    
-    # b-nin tipini yoxlayaq
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    
-    # Eger float-dirsa, integer-e cevirek
+
     if isinstance(a, float):
         a = int(a)
     if isinstance(b, float):
         b = int(b)
-    
-    # Toplama emeliyyatini yerine yetirek
+
     return a + b
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

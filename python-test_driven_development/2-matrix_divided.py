@@ -18,7 +18,6 @@ def matrix_divided(matrix, div):
                    or rows have different sizes, or div is not a number
         ZeroDivisionError: If div is zero
     """
-    # Error messages
     err1 = "matrix must be a matrix (list of lists) of integers/floats"
     err2 = "Each row of the matrix must have the same size"
     err3 = "div must be a number"

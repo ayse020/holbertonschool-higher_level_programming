@@ -37,7 +37,7 @@ class Circle(Shape):
         Args:
             radius (float): Radius of the circle
         """
-        self.radius = radius
+        self.radius = abs(radius)  # Use absolute value
     
     def area(self):
         """
@@ -74,8 +74,8 @@ class Rectangle(Shape):
             width (float): Width of the rectangle
             height (float): Height of the rectangle
         """
-        self.width = width
-        self.height = height
+        self.width = abs(width)    # Use absolute value
+        self.height = abs(height)  # Use absolute value
     
     def area(self):
         """

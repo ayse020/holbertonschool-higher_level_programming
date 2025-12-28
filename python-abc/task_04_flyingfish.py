@@ -1,39 +1,42 @@
 #!/usr/bin/env python3
-"""FlyingFish with Multiple Inheritance"""
+"""The Enigmatic FlyingFish - Exploring Multiple Inheritance"""
 
 class Fish:
-    """Base class for fish"""
+    """Fish class representing aquatic animals"""
     
     def swim(self):
-        """Return swimming message"""
-        return "The fish is swimming"
+        """Print swimming message"""
+        print("The fish is swimming")
     
     def habitat(self):
-        """Return habitat message"""
-        return "The fish lives in water"
+        """Print habitat message"""
+        print("The fish lives in water")
 
 class Bird:
-    """Base class for bird"""
+    """Bird class representing aerial animals"""
     
     def fly(self):
-        """Return flying message"""
-        return "The bird is flying"
+        """Print flying message"""
+        print("The bird is flying")
     
     def habitat(self):
-        """Return habitat message"""
-        return "The bird lives in the sky"
+        """Print habitat message"""
+        print("The bird lives in the sky")
 
 class FlyingFish(Fish, Bird):
-    """FlyingFish inherits from both Fish and Bird"""
-    
-    def swim(self):
-        """Override swim method"""
-        return "The flying fish is swimming!"
+    """
+    FlyingFish class that inherits from both Fish and Bird
+    Demonstrates multiple inheritance in Python
+    """
     
     def fly(self):
-        """Override fly method"""
-        return "The flying fish is soaring!"
+        """Override Bird's fly method for flying fish"""
+        print("The flying fish is soaring!")
+    
+    def swim(self):
+        """Override Fish's swim method for flying fish"""
+        print("The flying fish is swimming!")
     
     def habitat(self):
-        """Override habitat method"""
-        return "The flying fish lives both in water and the sky!"
+        """Override habitat method for flying fish"""
+        print("The flying fish lives both in water and the sky!")

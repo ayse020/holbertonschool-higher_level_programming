@@ -1,41 +1,27 @@
 #!/usr/bin/env python3
-"""
-Task 5: Dragon with Mixins
-"""
-
+"""Dragon with Mixins"""
 
 class SwimMixin:
-    """
-    Mixin class that provides swimming capability.
-    """
+    """Mixin for swimming capability"""
     
     def swim(self):
-        """
-        Print that the creature swims.
-        """
-        print("The creature swims!")
-
+        """Return swimming message"""
+        return "The creature swims!"
 
 class FlyMixin:
-    """
-    Mixin class that provides flying capability.
-    """
+    """Mixin for flying capability"""
     
     def fly(self):
-        """
-        Print that the creature flies.
-        """
-        print("The creature flies!")
-
+        """Return flying message"""
+        return "The creature flies!"
 
 class Dragon(SwimMixin, FlyMixin):
-    """
-    Dragon class that inherits from both SwimMixin and FlyMixin.
-    Demonstrates the use of mixins.
-    """
+    """Dragon class with swimming and flying capabilities"""
     
     def roar(self):
-        """
-        Print that the dragon roars.
-        """
-        print("The dragon roars!")
+        """Dragon's roar"""
+        return "The dragon roars!"
+    
+    def breath_fire(self):
+        """Dragon's fire breath"""
+        return "The dragon breathes fire!"

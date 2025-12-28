@@ -1,56 +1,26 @@
 #!/usr/bin/env python3
-"""
-Task 0: Abstract Animal Class and its Subclasses
-"""
+"""Abstract Animal Class and its Subclasses"""
 
 from abc import ABC, abstractmethod
 
-
 class Animal(ABC):
-    """
-    Abstract Animal class.
-    This class cannot be instantiated directly because it has
-    an abstract method 'sound'.
-    """
+    """Abstract base class for animals"""
     
     @abstractmethod
     def sound(self):
-        """
-        Abstract method that must be implemented by subclasses.
-        
-        Returns:
-            str: The sound the animal makes
-        """
+        """Return the sound the animal makes"""
         pass
 
-
 class Dog(Animal):
-    """
-    Dog class that inherits from Animal.
-    Implements the abstract sound() method from Animal.
-    """
+    """Dog class that inherits from Animal"""
     
     def sound(self):
-        """
-        Returns the sound of a dog.
-        
-        Returns:
-            str: "Bark"
-        """
+        """Return dog sound"""
         return "Bark"
 
-
 class Cat(Animal):
-    """
-    Cat class that inherits from Animal.
-    Implements the abstract sound() method from Animal.
-    """
+    """Cat class that inherits from Animal"""
     
     def sound(self):
-        """
-        Returns the sound of a cat.
-        
-        Returns:
-            str: "Meow"
-        """
+        """Return cat sound"""
         return "Meow"

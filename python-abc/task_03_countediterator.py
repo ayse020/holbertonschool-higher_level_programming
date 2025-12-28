@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CountedIterator class"""
+"""CountedIterator - Keeping Track of Iteration"""
 
 class CountedIterator:
     """An iterator that counts how many items have been iterated"""
@@ -10,13 +10,13 @@ class CountedIterator:
         self.counter = 0
     
     def __next__(self):
-        """Get the next item and increment counter"""
+        """Get the next item and increment counter only if successful"""
         try:
             item = next(self.iterator)
             self.counter += 1
             return item
         except StopIteration:
-            raise StopIteration
+            raise
     
     def __iter__(self):
         """Return self as iterator"""

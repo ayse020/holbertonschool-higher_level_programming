@@ -1,21 +1,27 @@
 #!/usr/bin/python3
-"""Matrix division module."""
+"""
+Matrix Division Module
+
+This module provides a function to divide all elements of a matrix.
+"""
 
 
 def matrix_divided(matrix, div):
     """
-    Divide all elements of a matrix.
+    Divides all elements of a matrix by a divisor.
 
     Args:
-        matrix: List of lists of integers/floats
-        div: Number to divide by (integer/float)
+        matrix: A list of lists containing integers or floats
+        div: A number (integer or float) to divide by
 
     Returns:
-        New matrix with divided values rounded to 2 decimal places
+        A new matrix with all elements divided by div,
+        rounded to 2 decimal places
 
     Raises:
-        TypeError: If matrix is not list of lists of integers/floats,
-                   or rows have different sizes, or div is not a number
+        TypeError: If matrix is not a list of lists of integers/floats,
+                   or if rows have different sizes,
+                   or if div is not a number
         ZeroDivisionError: If div is zero
     """
     # Error messages
@@ -27,50 +33,45 @@ def matrix_divided(matrix, div):
     # Check if matrix is a list
     if not isinstance(matrix, list):
         raise TypeError(matrix_err)
-    
+
     # Check if matrix is empty
-    if len(matrix) == 0:
+    if not matrix:
         raise TypeError(matrix_err)
-    
+
     # Check each row
     for row in matrix:
-        # Check if row is a list
         if not isinstance(row, list):
             raise TypeError(matrix_err)
-        # Check if row is empty
-        if len(row) == 0:
+        if not row:
             raise TypeError(matrix_err)
-        # Check each element in row
         for element in row:
             if not isinstance(element, (int, float)):
                 raise TypeError(matrix_err)
-    
+
     # Check if all rows have the same size
-    # First check if we have at least one row with elements
-    if len(matrix[0]) == 0:
-        raise TypeError(matrix_err)
-    
-    first_row_len = len(matrix[0])
+    row_len = len(matrix[0])
     for row in matrix:
-        if len(row) != first_row_len:
+        if len(row) != row_len:
             raise TypeError(row_err)
-    
+
     # Check divisor
     if not isinstance(div, (int, float)):
         raise TypeError(div_err)
-    
+
     if div == 0:
         raise ZeroDivisionError(zero_err)
-    
+
     # Perform division and rounding
     new_matrix = []
     for row in matrix:
         new_row = []
         for element in row:
-            # Handle division by infinity
             result = element / div
-            # Round to 2 decimal places
-            new_row.append(round(result, 2))
+            rounded = round(result, 2)
+            # Handle -0.0 case
+            if rounded == -0.0:
+                rounded = 0.0
+            new_row.append(rounded)
         new_matrix.append(new_row)
-    
+
     return new_matrix

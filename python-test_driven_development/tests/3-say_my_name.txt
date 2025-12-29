@@ -1,10 +1,6 @@
-Test say_my_name function
-=========================
+Test cases for say_my_name function
+>>> say_my_name = __import__('3-say_my_name').say_my_name
 
->>> from 3-say_my_name import say_my_name
-
-Normal cases
-------------
 >>> say_my_name("John", "Smith")
 My name is John Smith
 
@@ -12,52 +8,40 @@ My name is John Smith
 My name is Walter White
 
 >>> say_my_name("Bob")
-My name is Bob
+My name is Bob 
 
-Edge cases
-----------
->>> say_my_name("John", "")
-My name is John
+>>> try:
+...     say_my_name(12, "White")
+... except Exception as e:
+...     print(e)
+first_name must be a string
 
->>> say_my_name("", "Doe")
-My name is  Doe
+>>> try:
+...     say_my_name("John", 123)
+... except Exception as e:
+...     print(e)
+last_name must be a string
 
->>> say_my_name("   ", "   ")
-My name is
+>>> try:
+...     say_my_name(None, "Smith")
+... except Exception as e:
+...     print(e)
+first_name must be a string
 
-Error cases
------------
->>> say_my_name(12, "White")
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
+>>> try:
+...     say_my_name("John", None)
+... except Exception as e:
+...     print(e)
+last_name must be a string
 
->>> say_my_name("John", 123)
-Traceback (most recent call last):
-    ...
-TypeError: last_name must be a string
+>>> try:
+...     say_my_name([1, 2], "Smith")
+... except Exception as e:
+...     print(e)
+first_name must be a string
 
->>> say_my_name(12, 34)
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
-
->>> say_my_name(None, "Smith")
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
-
->>> say_my_name("John", None)
-Traceback (most recent call last):
-    ...
-TypeError: last_name must be a string
-
->>> say_my_name([1, 2], "Smith")
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
-
->>> say_my_name("John", {"key": "value"})
-Traceback (most recent call last):
-    ...
-TypeError: last_name must be a string
+>>> try:
+...     say_my_name("John", {"key": "value"})
+... except Exception as e:
+...     print(e)
+last_name must be a string

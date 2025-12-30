@@ -40,7 +40,8 @@ def main():
 
         # Create SQL query using format() as required
         # IMPORTANT: In real applications, use parameterized queries instead!
-        query = "SELECT * FROM states WHERE name = '{}'".format(state_name)
+        query = "SELECT * FROM states WHERE name = BINARY '{}'".format(
+            state_name)
         query += " ORDER BY id ASC"
 
         # Execute the query

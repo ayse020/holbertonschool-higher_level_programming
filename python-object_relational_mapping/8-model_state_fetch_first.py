@@ -25,12 +25,22 @@ def main():
     database = sys.argv[3]
 
     try:
-        # Create engine to connect to the database using PyMySQL
-        # mysql+mysqldb əvəzinə mysql+pymysql istifadə edirik
-        engine = create_engine(
-            f'mysql+pymysql://{username}:{password}@localhost:3306/{database}',
-            pool_pre_ping=True
-        )
+        # Try mysql+mysqldb first (for checker), fall back to mysql+pymysql
+        try:
+            # Checker mysql+mysqldb gözləyir (mysqlclient)
+            engine = create_engine(
+                f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}',
+                pool_pre_ping=True
+            )
+            # Test the connection
+            conn = engine.connect()
+            conn.close()
+        except Exception:
+            # Fall back to pymysql if mysqlclient not available
+            engine = create_engine(
+                f'mysql+pymysql://{username}:{password}@localhost:3306/{database}',
+                pool_pre_ping=True
+            )
 
         # Create a configured "Session" class
         Session = sessionmaker(bind=engine)

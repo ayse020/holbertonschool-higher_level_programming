@@ -1,40 +1,18 @@
 #!/usr/bin/python3
 """
-State class definition for MySQL database
-This module defines the State class that maps to the 'states' table
+State model definition
 """
-
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-# Create a base class for declarative class definitions
 Base = declarative_base()
 
 
 class State(Base):
     """
-    State class representing a state in the database
-
-    This class maps to the 'states' table in MySQL.
-
-    Attributes:
-        id (int): Auto-generated unique integer, primary key, cannot be null
-        name (str): String with maximum 128 characters, cannot be null
+    State class that links to the MySQL table 'states'
     """
-
-    # This specifies the name of the table in the database
     __tablename__ = 'states'
 
-    # Define the id column
-    id = Column(
-        Integer,
-        primary_key=True,
-        autoincrement=True,
-        nullable=False
-    )
-
-    # Define the name column
-    name = Column(
-        String(128),
-        nullable=False
-    )
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    name = Column(String(128), nullable=False)

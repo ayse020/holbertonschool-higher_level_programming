@@ -28,19 +28,17 @@ def main():
         # Try mysql+mysqldb first (for checker), fall back to mysql+pymysql
         try:
             # Checker mysql+mysqldb gözləyir (mysqlclient)
-            engine = create_engine(
-                f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}',
-                pool_pre_ping=True
-            )
+            conn_str = (f'mysql+mysqldb://{username}:{password}@'
+                        f'localhost:3306/{database}')
+            engine = create_engine(conn_str, pool_pre_ping=True)
             # Test the connection
             conn = engine.connect()
             conn.close()
         except Exception:
             # Fall back to pymysql if mysqlclient not available
-            engine = create_engine(
-                f'mysql+pymysql://{username}:{password}@localhost:3306/{database}',
-                pool_pre_ping=True
-            )
+            conn_str = (f'mysql+pymysql://{username}:{password}@'
+                        f'localhost:3306/{database}')
+            engine = create_engine(conn_str, pool_pre_ping=True)
 
         # Create a configured "Session" class
         Session = sessionmaker(bind=engine)

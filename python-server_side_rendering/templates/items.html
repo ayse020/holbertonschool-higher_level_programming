@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items List</title>
+</head>
+<body>
+    <header>
+        <h1>My Flask App - Items List</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/items">Items</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Items List</h2>
+        
+        {% if items %}
+            <p>Total items: {{ items|length }}</p>
+            <ul>
+                {% for item in items %}
+                    <li>{{ loop.index }}. {{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No items found</p>
+        {% endif %}
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 My Flask App</p>
+    </footer>
+</body>
+</html>

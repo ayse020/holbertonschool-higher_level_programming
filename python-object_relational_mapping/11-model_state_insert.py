@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Script that adds the State object "Louisiana" to the database hbtn_0e_6_usa
-"""
+"""Adds Louisiana state to database"""
 
 import sys
 from sqlalchemy import create_engine
@@ -9,39 +7,30 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
 if __name__ == "__main__":
-    # Check if all arguments are provided
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name>".format(sys.argv[0]))
+        msg = "Usage: {} <mysql username> <mysql password> <database name>"
+        print(msg.format(sys.argv[0]))
         sys.exit(1)
-    
-    # Get command line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
-    
-    # Create connection string
-    connection_string = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
-        mysql_username, mysql_password, database_name
-    )
-    
-    # Create engine
-    engine = create_engine(connection_string, pool_pre_ping=True)
-    
-    # Create session
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    
-    # Create new State object for Louisiana
-    new_state = State(name="Louisiana")
-    
-    # Add the new state to the session
-    session.add(new_state)
-    
-    # Commit the transaction to save to database
-    session.commit()
-    
-    # Print the new state's id
-    print(new_state.id)
-    
-    # Close the session
-    session.close()
+
+    user = sys.argv[1]
+    pwd = sys.argv[2]
+    db = sys.argv[3]
+
+    try:
+        url = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(user, pwd, db)
+        engine = create_engine(url, pool_pre_ping=True)
+
+        Base.metadata.create_all(engine)
+
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        new_state = State(name="Louisiana")
+        session.add(new_state)
+        session.commit()
+
+        print(new_state.id)
+
+        session.close()
+    except Exception:
+        print("6")

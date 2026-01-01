@@ -88,12 +88,12 @@ def display_products():
     # Validate source parameter
     if not source:
         return render_template('product_display.html', 
-                             error="Source parameter is required. Use ?source=json, ?source=csv, or ?source=sql")
+                             error="Source parameter is required")
     
     # Check if source is valid
     if source not in ['json', 'csv', 'sql']:
         return render_template('product_display.html', 
-                             error=f"Wrong source: '{source}'. Use 'json', 'csv', or 'sql'.")
+                             error="Wrong source")
     
     # Read data based on source
     products = []
@@ -114,7 +114,7 @@ def display_products():
         
         if not filtered_products:
             return render_template('product_display.html', 
-                                 error=f"Product with ID '{product_id}' not found.")
+                                 error="Product not found")
         
         products = filtered_products
     

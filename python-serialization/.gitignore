@@ -1,0 +1,13 @@
+# Python cache files
+*.pyc
+__pycache__/
+
+# Pickle files
+*.pkl
+
+# JSON test files  
+*.json
+
+# Test Python files
+test_*.py
+*_test.py

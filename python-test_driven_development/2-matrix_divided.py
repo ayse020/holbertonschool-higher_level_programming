@@ -4,6 +4,7 @@ matrix_divided module
 Defines a function to divide all elements of a matrix by a given divisor
 """
 
+
 def matrix_divided(matrix, div):
     """Divide all elements of a matrix by div, rounded to 2 decimal places"""
 
@@ -25,4 +26,16 @@ def matrix_divided(matrix, div):
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
 
-    # Ch
+    # Check if div is zero
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    # Divide each element by div, rounded to 2 decimal places
+    new_matrix = []
+    for row in matrix:
+        new_row = []
+        for element in row:
+            new_row.append(round(element / div, 2))
+        new_matrix.append(new_row)
+
+    return new_matrix

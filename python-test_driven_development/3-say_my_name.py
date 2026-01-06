@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-This module contains the function say_my_name
+Module that defines the function say_my_name
 """
 
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints: My name is <first_name> <last_name>
+    Prints: My name is <first_name> <last_name>.
 
     Args:
         first_name (str): first name
@@ -24,4 +24,3 @@ def say_my_name(first_name, last_name=""):
         raise TypeError("last_name must be a string")
 
     print("My name is {} {}".format(first_name, last_name))
-

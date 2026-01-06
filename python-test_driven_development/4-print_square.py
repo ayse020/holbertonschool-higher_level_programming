@@ -24,10 +24,6 @@ def print_square(size):
     if size < 0:
         raise ValueError("size must be >= 0")
     
-    # Print the square
+    # Print the square - for size=0, the loop won't run, so nothing is printed
     for i in range(size):
         print("#" * size)
-    
-    # For size = 0, print a blank line to match the test expectation
-    if size == 0:
-        print()

@@ -23,10 +23,8 @@ def text_indentation(text):
     for char in text:
         line += char
         if char in ".?:":
-            print(line.strip())
-            print()
-            print()
+            print(line.strip(), end="\n\n")  # iki yeni sətiri bir yerdə əlavə et
             line = ""
     
-    if line:
-        print(line.strip())
+    if line:  # son hissə
+        print(line.strip(), end="")  # artıq boş sətir çıxarmır

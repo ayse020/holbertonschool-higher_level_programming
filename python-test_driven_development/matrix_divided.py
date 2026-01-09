@@ -1,39 +1,50 @@
 #!/usr/bin/python3
 """
-matrix_divided module
-Defines a function to divide all elements of a matrix by a given divisor
+This module provides a function to divide all elements of a matrix
+by a given divisor.
 """
 
-def matrix_divided(matrix, div):
-    """Divide all elements of a matrix by div, rounded to 2 decimal places"""
 
-    # Check if matrix is a list of lists
+def matrix_divided(matrix, div):
+    """
+    Divides all elements of a matrix by div.
+
+    Args:
+        matrix (list of lists of int/float): The matrix to divide
+        div (int/float): The divisor
+
+    Returns:
+        list: New matrix with all elements divided by div rounded to 2 decimals
+
+    Raises:
+        TypeError: If matrix or div is not the correct type
+        ZeroDivisionError: If div is 0
+    """
+    # Check matrix type
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
 
-    # Check if all elements are int or float
+    # Check each element type
     for row in matrix:
-        if not all(isinstance(el, (int, float)) for el in row):
+        if not all(isinstance(num, (int, float)) for num in row):
             raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
 
-    # Check if all rows are of the same size
-    if len(set(len(row) for row in matrix)) != 1:
-        raise TypeError("Each row of the matrix must have the same size")
+    # Check row sizes
+    row_length = len(matrix[0])
+    for row in matrix:
+        if len(row) != row_length:
+            raise TypeError("Each row of the matrix must have the same size")
 
-    # Check if div is a number
+    # Check div type
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
-
-    # Check if div is zero
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Divide all elements and round to 2 decimal places
+    # Divide matrix
     new_matrix = []
     for row in matrix:
-        new_row = []
-        for el in row:
-            new_row.append(round(el / div, 2))
+        new_row = [round(num / div, 2) for num in row]
         new_matrix.append(new_row)
 
     return new_matrix

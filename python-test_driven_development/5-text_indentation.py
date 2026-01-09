@@ -5,6 +5,7 @@ with 2 new lines after each '.', '?' or ':'. It also raises a TypeError
 if the input is not a string.
 """
 
+
 def text_indentation(text):
     """
     Prints a text with 2 new lines after each '.', '?' or ':'.
@@ -17,14 +18,15 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    
+
     line = ""
-    
+
     for char in text:
         line += char
         if char in ".?:":
-            print(line.strip(), end="\n\n")  # iki yeni sətiri bir yerdə əlavə et
+            print(line.strip(), end="\n\n")
             line = ""
-    
-    if line:  # son hissə
-        print(line.strip(), end="")  # artıq boş sətir çıxarmır
+
+    if line:
+        print(line.strip(), end="")
+

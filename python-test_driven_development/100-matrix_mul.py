@@ -24,6 +24,7 @@ def matrix_mul(*args):
         if len(args) == 1:
             raise TypeError("missing one argument")
         else:
+            # For more than 2 arguments, use Python's default error message
             raise TypeError(f"matrix_mul() takes 2 positional arguments but {len(args)} were given")
     
     m_a, m_b = args[0], args[1]

@@ -1,54 +1,47 @@
 #!/usr/bin/python3
 """
-The ``matrix_mul`` function multiplies two matrices.
+Test file for matrix_mul.py using doctest.
 
+>>> from matrix_mul import matrix_mul
 >>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
 [[19, 22], [43, 50]]
-
 >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
 [[13, 16]]
-
 >>> matrix_mul("Holberton", [[5, 6], [7, 8]])
 Traceback (most recent call last):
 TypeError: m_a must be a list
-
 >>> matrix_mul([[5, 6], [7, 8]], "Holberton")
 Traceback (most recent call last):
 TypeError: m_b must be a list
-
 >>> matrix_mul([1, 2, 3], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 TypeError: m_a must be a list of lists
-
 >>> matrix_mul([[5, 6], [7, 8]], [1, 2, 3])
 Traceback (most recent call last):
 TypeError: m_b must be a list of lists
-
 >>> matrix_mul([[]], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 ValueError: m_a can't be empty
-
 >>> matrix_mul([[5, 6], [7, 8]], [[]])
 Traceback (most recent call last):
 ValueError: m_b can't be empty
-
 >>> matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 TypeError: m_a should contain only integers or floats
-
 >>> matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]])
 Traceback (most recent call last):
 TypeError: m_b should contain only integers or floats
-
 >>> matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 TypeError: each row of m_a must be of the same size
-
 >>> matrix_mul([[5, 6], [7, 8]], [[5, 6, 1], [7, 8]])
 Traceback (most recent call last):
 TypeError: each row of m_b must be of the same size
-
 >>> matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
 Traceback (most recent call last):
 ValueError: m_a and m_b can't be multiplied
 """
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose=True)

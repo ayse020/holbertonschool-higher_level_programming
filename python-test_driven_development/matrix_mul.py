@@ -24,7 +24,7 @@ def matrix_mul(m_a, m_b):
     if m_b == [] or m_b == [[]]:
         raise ValueError("m_b can't be empty")
 
-    # Element type checks
+    # Element type check
     for row in m_a:
         if not all(isinstance(el, (int, float)) for el in row):
             raise TypeError("m_a should contain only integers or floats")
@@ -32,7 +32,7 @@ def matrix_mul(m_a, m_b):
         if not all(isinstance(el, (int, float)) for el in row):
             raise TypeError("m_b should contain only integers or floats")
 
-    # Row size checks
+    # Row size check
     row_len_a = len(m_a[0])
     for row in m_a:
         if len(row) != row_len_a:
@@ -59,4 +59,3 @@ def matrix_mul(m_a, m_b):
         result.append(row_result)
 
     return result
-

@@ -1,69 +1,73 @@
 #!/usr/bin/python3
 """
-This module multiplies two matrices.
+Defines a matrix multiplication function.
 """
 
 
 def matrix_mul(m_a, m_b):
-    """
-    Multiplies two matrices.
+    """Multiply two matrices.
 
     Args:
-        m_a (list of lists): first matrix
-        m_b (list of lists): second matrix
+        m_a (list of lists of ints/floats): The first matrix.
+        m_b (list of lists of ints/floats): The second matrix.
 
     Returns:
-        list of lists: product of matrices
+        list of lists of ints/floats: The result of the multiplication.
 
     Raises:
-        TypeError: if inputs are invalid
-        ValueError: if matrices can't be multiplied
-
-    Examples:
-    >>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
-    [[19, 22], [43, 50]]
-    >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
-    [[13, 16]]
+        TypeError: If m_a or m_b is not a list, not a list of lists,
+                   contains non-integer/float elements, or is not rectangular.
+        ValueError: If m_a or m_b is empty, or if the matrices cannot be multiplied.
     """
-    # Validation
+    # Validate m_a
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
-    if any(not isinstance(row, list) for row in m_a):
+
+    if not all(isinstance(row, list) for row in m_a):
         raise TypeError("m_a must be a list of lists")
-    if any(not isinstance(row, list) for row in m_b):
+    if not all(isinstance(row, list) for row in m_b):
         raise TypeError("m_b must be a list of lists")
-    if m_a == [[]] or m_a == []:
+
+    if m_a == [] or m_a == [[]]:
         raise ValueError("m_a can't be empty")
-    if m_b == [[]] or m_b == []:
+    if m_b == [] or m_b == [[]]:
         raise ValueError("m_b can't be empty")
-    if any(not all(isinstance(i, (int, float)) for i in row) for row in m_a):
-        raise TypeError("m_a should contain only integers or floats")
-    if any(not all(isinstance(i, (int, float)) for i in row) for row in m_b):
-        raise TypeError("m_b should contain only integers or floats")
-    if any(len(row) != len(m_a[0]) for row in m_a):
+
+    for row in m_a:
+        for element in row:
+            if not isinstance(element, (int, float)):
+                raise TypeError("m_a should contain only integers or floats")
+    for row in m_b:
+        for element in row:
+            if not isinstance(element, (int, float)):
+                raise TypeError("m_b should contain only integers or floats")
+
+    row_len_a = len(m_a[0])
+    if not all(len(row) == row_len_a for row in m_a):
         raise TypeError("each row of m_a must be of the same size")
-    if any(len(row) != len(m_b[0]) for row in m_b):
+    row_len_b = len(m_b[0])
+    if not all(len(row) == row_len_b for row in m_b):
         raise TypeError("each row of m_b must be of the same size")
 
-    # Check if multiplication possible
+    # Check multiplication compatibility
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    # Multiply
-    result = []
-    for row in m_a:
-        new_row = []
-        for col in range(len(m_b[0])):
-            s = 0
-            for k in range(len(row)):
-                s += row[k] * m_b[k][col]
-            new_row.append(s)
-        result.append(new_row)
+    # Initialize result matrix with zeros
+    result = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
+
+    # Perform multiplication
+    for i in range(len(m_a)):
+        for j in range(len(m_b[0])):
+            for k in range(len(m_b)):
+                result[i][j] += m_a[i][k] * m_b[k][j]
+
     return result
 
 
 if __name__ == "__main__":
+    # Run doctest if executed directly
     import doctest
-    doctest.testmod(verbose=True)
+    doctest.testfile("tests/100-matrix_mul.txt")

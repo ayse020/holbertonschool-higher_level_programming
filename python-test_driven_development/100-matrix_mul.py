@@ -4,7 +4,7 @@ Defines a matrix multiplication function.
 """
 
 
-def matrix_mul(*args):
+def matrix_mul(m_a, m_b):
     """Multiply two matrices.
 
     Args:
@@ -19,17 +19,7 @@ def matrix_mul(*args):
                    contains non-integer/float elements, or is not rectangular.
         ValueError: If m_a or m_b is empty, or if the matrices cannot be multiplied.
     """
-    # Check number of arguments
-    if len(args) != 2:
-        if len(args) == 1:
-            raise TypeError("missing one argument")
-        else:
-            # For more than 2 arguments, use Python's default error message
-            raise TypeError(f"matrix_mul() takes 2 positional arguments but {len(args)} were given")
-    
-    m_a, m_b = args[0], args[1]
-    
-    # Rest of the validation code remains the same
+    # Validate m_a
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):

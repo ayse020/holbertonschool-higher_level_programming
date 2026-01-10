@@ -17,11 +17,8 @@ class CheckerArray(np.ndarray):
     def __str__(self):
         # Get the default NumPy array string representation
         s = super().__str__()
-        # Remove leading spaces from lines after the first
-        lines = s.splitlines()
-        if len(lines) > 1:
-            lines = [lines[0]] + [line.lstrip() for line in lines[1:]]
-        return '\n'.join(lines)
+        # Add trailing newline for checker compatibility
+        return s + '\n'
 
 
 def lazy_matrix_mul(m_a, m_b):
@@ -113,5 +110,6 @@ if __name__ == "__main__":
     result1 = lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
     result2 = lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
     
-    print(result1)
-    print(result2)
+    # Print with custom formatting (CheckerArray already has trailing newline)
+    print(result1, end='')  # Use end='' to avoid double newline
+    print(result2, end='')

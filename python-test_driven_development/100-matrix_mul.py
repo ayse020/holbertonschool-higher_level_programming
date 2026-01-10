@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-import sys
-sys.path.append("..")
-from matrix_mul import matrix_mul
-
 """
 The ``matrix_mul`` function multiplies two matrices.
 
@@ -56,8 +52,3 @@ TypeError: each row of m_b must be of the same size
 Traceback (most recent call last):
 ValueError: m_a and m_b can't be multiplied
 """
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod(verbose=True)
-

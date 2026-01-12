@@ -52,9 +52,9 @@ class Rectangle:
         """Return the rectangle with '#' characters."""
         if self.width == 0 or self.height == 0:
             return ""
-        lines = ["#" * self.width for _ in range(self.height)]
-        return "\n".join(lines)
+        return "\n".join(["#" * self.width for _ in range(self.height)])
 
     def __repr__(self):
         """Return a string representation to recreate a new instance with eval()."""
-        return f"Rectangle({self.width}, {self.height})"
+        rect_repr = f"Rectangle({self.width}, {self.height})"
+        return rect_repr

@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """This module defines a Rectangle class."""
 
+
 class Rectangle:
     """A class that defines a rectangle."""
-
+    
     def __init__(self, width=0, height=0):
         """Initialize the rectangle with optional width and height."""
         self.width = width
@@ -53,5 +54,3 @@ class Rectangle:
             return ""
         lines = ["#" * self.width for _ in range(self.height)]
         return "\n".join(lines)
-
-    # **__repr__ metodunu silirik, standart object.__repr__ istifadə olunacaq**

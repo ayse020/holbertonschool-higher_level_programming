@@ -54,6 +54,4 @@ class Rectangle:
         lines = ["#" * self.width for _ in range(self.height)]
         return "\n".join(lines)
 
-    def __repr__(self):
-        """Return the string representation of the rectangle."""
-        return f"Rectangle({self.width}, {self.height})"
+    # **__repr__ metodunu silirik, standart object.__repr__ istifadə olunacaq**

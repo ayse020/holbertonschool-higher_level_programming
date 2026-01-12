@@ -1,21 +1,22 @@
 #!/usr/bin/python3
-"""5-square.py: Square class with size, area, and my_print"""
+"""Define a square with size and printing capabilities."""
+
 
 class Square:
-    """Defines a square"""
+    """Represent a square."""
 
     def __init__(self, size=0):
-        """Initialize a square with optional size"""
-        self.size = size  # Burada setter çağırılır və validation edilir
+        """Initialize the square with size."""
+        self.size = size
 
     @property
     def size(self):
-        """Getter to retrieve the size"""
+        """Get the size of the square."""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Setter to set the size with validation"""
+        """Set the size of the square with validation."""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -23,13 +24,13 @@ class Square:
         self.__size = value
 
     def area(self):
-        """Return current square area"""
+        """Return the current square area."""
         return self.__size ** 2
 
     def my_print(self):
-        """Print the square using # character"""
+        """Print the square using the '#' character."""
         if self.__size == 0:
             print()
             return
         for _ in range(self.__size):
-            print('#' * self.__size)
+            print("#" * self.__size)

@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-"""3-main.py: Test Rectangle class with __str__ and __repr__."""
+"""Test file for Rectangle class."""
 
 Rectangle = __import__('3-rectangle').Rectangle
 
 my_rectangle = Rectangle(2, 4)
-print(
-    "Area: {} - Perimeter: {}".format(
-        my_rectangle.area(), my_rectangle.perimeter()
-    )
-)
-
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(),
+                                        my_rectangle.perimeter()))
 print(str(my_rectangle))
 print(repr(my_rectangle))
 

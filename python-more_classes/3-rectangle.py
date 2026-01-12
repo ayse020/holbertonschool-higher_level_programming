@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with width, height, area, perimeter,
-and string representations (# for __str__ and recreatable for __repr__)."""
+"""Module that defines a Rectangle class with width, height, area, perimeter,
+and string representations.
+"""
 
 
 class Rectangle:
-    """Represents a rectangle."""
+    """A class that defines a rectangle."""
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle instance."""
+        """Initialize the rectangle with optional width and height."""
         self.width = width
         self.height = height
 
@@ -50,11 +51,11 @@ class Rectangle:
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Return a string of the rectangle with '#' characters."""
+        """Return a string representation of the rectangle with '#' characters."""
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join("#" * self.width for _ in range(self.height))
+        return "\n".join(["#" * self.width for _ in range(self.height)])
 
     def __repr__(self):
-        """Return a string to recreate the object."""
+        """Return a string that can recreate the object."""
         return f"Rectangle({self.width}, {self.height})"

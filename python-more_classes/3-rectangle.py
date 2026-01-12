@@ -1,16 +1,10 @@
 #!/usr/bin/python3
-"""
-Module 3-rectangle
-Defines a Rectangle class with width, height, area, perimeter,
-and string representations.
-"""
 
 
 class Rectangle:
-    """Rectangle class with width, height, area, perimeter, and string representation."""
+    """Defines a rectangle with width and height."""
 
     def __init__(self, width=0, height=0):
-        """Initialize rectangle with optional width and height."""
         self.width = width
         self.height = height
 
@@ -21,7 +15,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """Set the width of the rectangle with validation."""
+        """Set the width with validation."""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -35,7 +29,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        """Set the height of the rectangle with validation."""
+        """Set the height with validation."""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -60,4 +54,4 @@ class Rectangle:
 
     def __repr__(self):
         """Return a string representation to recreate the object."""
-        return f"Rectangle({self.width}, {self.height})"
+        return f"<3-rectangle.Rectangle object at {hex(id(self))}>"

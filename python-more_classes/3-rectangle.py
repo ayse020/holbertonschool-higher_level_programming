@@ -1,10 +1,13 @@
 #!/usr/bin/python3
+"""Defines a Rectangle class with width, height, area, perimeter,
+and string representations (# for __str__ and recreatable for __repr__)."""
 
 
 class Rectangle:
-    """Defines a rectangle with width and height."""
+    """Represents a rectangle."""
 
     def __init__(self, width=0, height=0):
+        """Initialize a new Rectangle instance."""
         self.width = width
         self.height = height
 
@@ -15,7 +18,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """Set the width with validation."""
+        """Set the width of the rectangle with validation."""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -29,7 +32,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        """Set the height with validation."""
+        """Set the height of the rectangle with validation."""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -47,11 +50,11 @@ class Rectangle:
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Return the rectangle as a string using '#' characters."""
+        """Return a string of the rectangle with '#' characters."""
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join(["#" * self.width for _ in range(self.height)])
+        return "\n".join("#" * self.width for _ in range(self.height))
 
     def __repr__(self):
-        """Return a string representation to recreate the object."""
-        return f"<3-rectangle.Rectangle object at {hex(id(self))}>"
+        """Return a string to recreate the object."""
+        return f"Rectangle({self.width}, {self.height})"
